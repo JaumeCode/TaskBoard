@@ -1,45 +1,77 @@
-# TaskBoard
+# 🗂️ TaskBoard – Vue 3 + Firebase
 
-This template should help get you started developing with Vue 3 in Vite.
+Aplicación web tipo tablón de tareas donde los usuarios pueden registrarse, verificar su correo y acceder a una zona privada para ver tareas y asignarse algunas a su área de trabajo.
 
-## Recommended IDE Setup
+El proyecto está desarrollado con Vue 3 (Composition API), Firebase para la autenticación y base de datos, y desplegado en Vercel.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Recommended Browser Setup
+## 🚀 Funcionalidades principales
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Registro de usuarios con email y contraseña
+- Verificación de correo obligatoria
+- Login con control de usuarios no verificados
+- Rutas protegidas con Vue Router
+- Listado de tareas desde una API externa
+- Filtros de tareas (todas, completadas, pendientes, asignadas)
+- Asignación de tareas a usuarios
+- Área de trabajo personal
+- Guardado de tareas en Firestore
+- Cierre de sesión
 
-## Customize configuration
+---
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 🧑‍💻 Tecnologías usadas
 
-## Project Setup
+- Vue 3 (API)
+- Vue Router
+- Firebase Authentication
+- Firebase Firestore
+- Axios
+- Vercel
+- GitHub
 
-```sh
-npm install
-```
+---
 
-### Compile and Hot-Reload for Development
+## 🌐 API de tareas
 
-```sh
-npm run dev
-```
+Las tareas se obtienen desde la API pública:
 
-### Compile and Minify for Production
+https://dummyjson.com/todos
 
-```sh
-npm run build
-```
+Cada tarea muestra:
+- Texto de la tarea
+- Estado (completada o pendiente)
 
-### Lint with [ESLint](https://eslint.org/)
+Se gestiona también un estado de carga y mensajes de error si la petición falla.
 
-```sh
-npm run lint
-```
-# TaskBoard
+---
+
+## 🔐 Autenticación y acceso
+
+- El usuario debe pasar por /login o /register
+- Al registrarse se envía un correo de verificación
+- Sin correo verificado no se puede acceder a las rutas privadas
+- Solo los usuarios verificados pueden acceder al tablón y al workspace
+
+---
+
+
+## 🧭 Rutas de la aplicación
+
+- /login → Inicio de sesión
+- /register → Registro
+- / → Tablón de tareas (privada)
+- /workspace → Área de trabajo (privada)
+
+---
+
+## ☁️ Despliegue
+
+- Proyecto subido a GitHub
+- Desplegado en Vercel
+
+Enlace a la aplicación:
+https://task-board-ruddy-sigma.vercel.app/
+
+---

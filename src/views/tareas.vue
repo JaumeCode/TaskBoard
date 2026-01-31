@@ -1,9 +1,10 @@
 <template>
     
     <div id="main">
+        
         <div id="header">
             <RouterLink to="/workspace">Workspace</RouterLink>
-            <h1>TaskBoard</h1>
+            <img src="../assets/icon.png" alt="">
             <button @click="cerrar_sesion">Cerrar Sesion</button>
             
         </div>
@@ -154,20 +155,18 @@ const favorito=async(tarea)=>{
     box-shadow: 0 0 20px rgba(76, 29, 149, 0.25)
     margin-bottom: 20px
 
+       
 
 
-    h1
-        font-size: 28px
-        font-weight: 600
+    img
+        width: 130px
 
         @media screen and (max-width: 768px)
-            font-size: 15px
-            text-decoration: underline
-            text-underline-offset: 4px
+            width: 90px
     a
         text-decoration: none
         color: #f1f1f1
-        font-size: 18px
+        font-size: 22px
         transition: color 0.2s
 
         @media screen and (max-width: 768px)
@@ -182,7 +181,7 @@ const favorito=async(tarea)=>{
         color: #fff
         border: none
         border-radius: 20px
-        padding: 10px 20px
+        padding: 10px 15px
         font-size: 14px
         font-weight: 600
         cursor: pointer
