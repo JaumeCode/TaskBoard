@@ -29,7 +29,10 @@ import { sendEmail } from '@/functions/auth';
 import { auth } from '@/firebase/config';
 import { useRouter } from 'vue-router';
 import { RouterLink } from 'vue-router';
+import { useToast } from 'vue-toastification';
 
+
+const toast=useToast()
 
 const correo=ref("")
 const password=ref("")
@@ -42,17 +45,21 @@ const enviar_registro=async()=>{
 
     try{
 
+        if (correo.value=="" || password.value==""){
 
+            toast.error("Rellena los campos porfavor")
+            return
+        }
         const resultado=await doRegister(correo.value,password.value)
         const email=await sendEmail(user)
-        console.log("Registro Correcto")
-        console.log("Verifica el correo electronico para continuar")
+        toast.success("Registro completado con exito")
+        toast.info("Verifica el correo electronico para continuar")
         router.push("/")
         
     }catch(error){
 
         console.log(error)
-        console.log("Ya hay un correo registrado con este")
+        toast.error("El usuario ya esta registrado,inicia sesion porfavor")
 
     }
 

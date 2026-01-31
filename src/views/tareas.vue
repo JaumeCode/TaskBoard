@@ -14,8 +14,10 @@
                 <option value="no_end">No Finalizadas</option>
             </select>
         </div>
-        <h1 v-if="loading">Cargando</h1>
-        <img v-if="loading" src="../assets/load.gif" alt="">
+        <div id="cargador" v-if="loading">
+
+            <img v-if="loading" src="../assets/load.gif" alt="">
+        </div>
         <div id="contenido" v-else>
             <div id="carta_tarea" v-for="tarea in datos_filtro" :key="tarea.id">
             
@@ -35,7 +37,13 @@ import axios from 'axios';
 import { logOut } from '@/functions/auth';
 import { anadirFavoritos } from '@/functions/profile';
 import { watch } from 'vue';
+import { useStore } from '@/stores/TareasStore';
+import { useToast } from 'vue-toastification';
 
+
+const toast=useToast()
+
+const store=useStore()
 
 const user=auth.currentUser
 
@@ -55,9 +63,11 @@ const getdata = async () => {
     const resultado = await axios.get("https://dummyjson.com/todos")
     datos.value = resultado.data.todos
     datos_filtro.value = resultado.data.todos
+    
     setTimeout(() => {
         loading.value = false
     }, 2000)
+
 }
 
 
@@ -94,7 +104,7 @@ const cerrar_sesion=async()=>{
     const cerrar=await logOut()
 
     if (cerrar.ok){
-
+        toast.warning("Sesion Cerrada Correctamente")
         router.push("/login")
 
     }
@@ -103,9 +113,10 @@ const cerrar_sesion=async()=>{
 
 }
 
+
 const favorito=async(tarea)=>{
 
-
+    
     console.log(uid)
     console.log(tarea)
     const guardado=await anadirFavoritos(tarea)
@@ -184,7 +195,7 @@ const favorito=async(tarea)=>{
         background: #0d0d0d
         color: #f1f1f1
         width: 250px
-        height: 30px
+        height: 40px
         border: 1px solid #222
         border-radius: 8px
         padding: 8px
@@ -201,12 +212,22 @@ img
     width: 250px
 
 
+#cargador
+
+    display: flex
+    justify-content: center
+
+
 #contenido
     display: flex
     justify-content: center
     flex-wrap: wrap
     gap: 30px
     margin-bottom: 20px
+
+
+
+
 
 
 

@@ -61,7 +61,7 @@ const conseguir = async(user)=>{
 const conseguirDocs = async()=>{
     try {
         
-        const docRef = collection(db, "usuarios")
+        const docRef = collection(db, "usuarios",uid)
         const snoopDog = await getDocs(docRef)
 
         const datos = []
@@ -123,7 +123,7 @@ export const anadirFavoritos = async (tarea) => {
 export const obtenerFavoritos = async()=>{
     const user = auth.currentUser
 
-    const favRef = collection(db, "usuarios", user.uid, "favoritos")
+    const favRef = collection(db, "usuarios", user.uid, "tareas")
     const snoopDog = await getDocs(favRef)
 
     const favoritos = snoopDog.docs.map(doc =>({

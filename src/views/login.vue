@@ -7,12 +7,12 @@
                 <div>
 
                     <label for="">Correo</label>
-                    <input type="text" v-model="correo">
+                    <input type="text" v-model="correo" required>
                 </div>
                 <div>
 
                     <label for="">Contraseña</label>
-                    <input type="password" v-model="password">
+                    <input type="password" v-model="password" required>
                 </div>
                 <button>Iniciar Sesion</button>
                 <RouterLink to="/register">No tienes cuenta ? Registrate</RouterLink>
@@ -28,6 +28,10 @@ import { doLogin } from '@/functions/auth';
 import { ref } from 'vue';
 import { auth } from '@/firebase/config';
 import { RouterLink,useRouter } from 'vue-router';
+import { useToast } from 'vue-toastification';
+
+
+const toast=useToast()
 
 const correo=ref("")
 const password=ref("")
@@ -42,17 +46,24 @@ const enviar_registro=async()=>{
 
         const resultado= await doLogin(correo.value,password.value)
         const user=auth.currentUser
-        if (!user.emailVerified){
+        if(!user){
 
-            console.log("Confirma el correo electronico")
+            toast.error("El usuario no esta registrado")
+
+        }
+
+
+        if (!user.emailVerified){
+            toast.error("Email no verificado, verifica tu correo")
             return
         }
 
-        console.log("Inicio de sesion correcto")
+        toast.success("Inicio de Sesion Completado")
         router.push("/")
 
     }catch(error){
 
+        
 
         console.log(error)
 
