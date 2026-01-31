@@ -154,16 +154,24 @@ const favorito=async(tarea)=>{
     box-shadow: 0 0 20px rgba(76, 29, 149, 0.25)
     margin-bottom: 20px
 
+
+
     h1
         font-size: 28px
         font-weight: 600
 
+        @media screen and (max-width: 768px)
+            font-size: 15px
+            text-decoration: underline
+            text-underline-offset: 4px
     a
         text-decoration: none
         color: #f1f1f1
         font-size: 18px
         transition: color 0.2s
 
+        @media screen and (max-width: 768px)
+            font-size: 15px
         &:hover
             color: #7c3aed
             text-decoration: underline

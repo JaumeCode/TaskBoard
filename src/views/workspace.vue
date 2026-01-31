@@ -89,7 +89,13 @@ onMounted(async () => {
         h1
             text-decoration: underline
             text-underline-offset: 4px
-            
+
+            @media screen and (max-width: 768px)
+                
+                display: flex
+                align-content: center
+                justify-content: center
+                font-size: 22px
 
 
     #head_2
@@ -97,7 +103,6 @@ onMounted(async () => {
         justify-content: center
         flex-direction: column
         align-items: center
-
 
         h3
             width: 240px
