@@ -228,7 +228,7 @@ img
 
 
 
-// Loader Preset de CSSLoaders
+//No es chatgpt , es de CSSLoaders , un preset
 .loader
   display: flex
   justify-content: center

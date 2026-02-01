@@ -116,6 +116,8 @@ onMounted(async () => {
         img
             width: 70px
             margin-top: 20px
+
+    //No es chatgpt , es de CSSLoaders , un preset
     #cargador
         display: flex
         justify-content: center
