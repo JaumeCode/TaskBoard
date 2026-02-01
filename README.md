@@ -4,6 +4,8 @@ Aplicación web tipo tablón de tareas donde los usuarios pueden registrarse, ve
 
 El proyecto está desarrollado con Vue 3 (Composition API), Firebase para la autenticación y base de datos, y desplegado en Vercel.
 
+Enlace a la aplicación:
+https://task-board-ruddy-sigma.vercel.app/
 ---
 
 ## 🚀 Funcionalidades principales
@@ -71,7 +73,5 @@ Se gestiona también un estado de carga y mensajes de error si la petición fall
 - Proyecto subido a GitHub
 - Desplegado en Vercel
 
-Enlace a la aplicación:
-https://task-board-ruddy-sigma.vercel.app/
 
 ---
