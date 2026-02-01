@@ -5,7 +5,7 @@
         <div id="header">
             <RouterLink to="/workspace">Workspace</RouterLink>
             <img src="../assets/icon.png" alt="">
-            <button @click="cerrar_sesion">Cerrar Sesion</button>
+            <button @click="cerrar_sesion">Logout</button>
             
         </div>
         <div id="buscador">
@@ -15,9 +15,8 @@
                 <option value="no_end">No Finalizadas</option>
             </select>
         </div>
-        <div id="cargador" v-if="loading">
-
-            <img v-if="loading" src="../assets/load.gif" alt="">
+        <div class="loader" id="cargador" v-if="loading">
+            <span></span>
         </div>
         <div id="contenido" v-else>
             <div id="carta_tarea" v-for="tarea in datos_filtro" :key="tarea.id">
@@ -154,6 +153,7 @@ const favorito=async(tarea)=>{
     border-radius: 12px
     box-shadow: 0 0 20px rgba(76, 29, 149, 0.25)
     margin-bottom: 20px
+    height: 110px
 
        
 
@@ -223,6 +223,53 @@ img
 
     display: flex
     justify-content: center
+
+
+
+
+
+// Loader Preset de CSSLoaders
+.loader
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100px
+  position: relative
+
+  &::before,
+  &::after,
+  span
+    content: ''
+    display: block
+    width: 20px
+    height: 20px
+    margin: 0 10px
+    border-radius: 50%
+    background: linear-gradient(45deg, #ffff, #5b21b6)
+    animation: bounce 0.6s infinite alternate
+
+  &::after
+    animation-delay: 0.2s
+
+  span
+    animation-delay: 0.4s
+
+@keyframes bounce
+  0%
+    transform: translateY(0)
+    box-shadow: 0 0 5px rgba(124, 58, 237, 0.3)
+  50%
+    transform: translateY(-20px)
+    box-shadow: 0 15px 25px rgba(124, 58, 237, 0.5)
+  100%
+    transform: translateY(0)
+    box-shadow: 0 0 5px rgba(124, 58, 237, 0.3)
+
+
+  
+
+
 
 
 #contenido

@@ -6,11 +6,16 @@
     </div>
     <div id="head_2">
         <h3>Estas son tus tareas</h3>
-        <img src="../assets/arrow.gif" alt="">
     </div>
-    <div id="cargando" v-if="login">
-        <img src="../assets/load.gif" alt="">
+    <div class="loader" id="cargador" v-if="login">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
+
     <div v-if="!login" id="contenido">
       <div id="contenido_2" v-for="fav in store.datos_personales" :key="fav.id">
         <p>{{ fav.todo }}</p>
@@ -111,9 +116,52 @@ onMounted(async () => {
         img
             width: 70px
             margin-top: 20px
-    #cargando
+    #cargador
         display: flex
         justify-content: center
+        align-items: center
+        min-height: 200px
+
+        .spinner
+            display: inline-block
+            position: relative
+            width: 80px
+            height: 80px
+
+            div
+                transform-origin: 40px 40px
+                animation: spinner 1.2s linear infinite
+                position: absolute
+                width: 7px
+                height: 7px
+                border-radius: 50%
+                background: #e0c3fc
+                top: 37px
+                left: 37px
+
+                &:nth-child(1)
+                    transform: rotate(0deg) translate(32px)
+                    animation-delay: -0.45s
+                &:nth-child(2)
+                    transform: rotate(90deg) translate(32px)
+                    animation-delay: -0.3s
+                &:nth-child(3)
+                    transform: rotate(180deg) translate(32px)
+                    animation-delay: -0.15s
+                &:nth-child(4)
+                    transform: rotate(270deg) translate(32px)
+                    animation-delay: 0s
+
+    @keyframes spinner
+        0%
+            transform: rotate(0deg) translate(32px) rotate(0deg)
+        100%
+            transform: rotate(360deg) translate(32px) rotate(-360deg)
+
+
+    
+
+
 
 
 
